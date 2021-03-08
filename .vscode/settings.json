@@ -2,6 +2,20 @@
     "files.associations": {
         "*.tcc": "cpp",
         "deque": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "future": "cpp",
+        "system_error": "cpp",
+        "regex": "cpp",
+        "clocale": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "ostream": "cpp",
+        "streambuf": "cpp",
+        "iostream": "cpp",
+        "array": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string_view": "cpp"
     }
 }
