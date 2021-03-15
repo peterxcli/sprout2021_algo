@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
+	cin.tie(0), ios_base::sync_with_stdio(0);
 	int a, b, t1, t2;
 	cin >> a >> b;
 	unordered_map<int, pair<int, int> > num;
@@ -33,7 +34,9 @@ int main() {
 		}
 	}
 	cout << ans.size() << endl;
-	for (int i = 0; i < ans.size(); i++)
-		cout << ans[i] << ' ';
+	cout << ans[0];
+	for (int i = 1; i < ans.size(); i++)
+		cout << " " << ans[i];
+	cout << "\n";
 	return 0;
 }
