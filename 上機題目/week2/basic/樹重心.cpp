@@ -10,7 +10,7 @@ int size[MAXN];
 int ans, balance_size;
 inline void init(){
 	for(int i=0;i<n;++i)g[i].clear();
-	balance_size=INF;
+	balance_size = INF;
 }
 void dfs(int u,int pa){
 	size[u]=1;
