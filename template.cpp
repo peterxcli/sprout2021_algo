@@ -103,3 +103,64 @@ template <class T> struct linked_list{
     cout << "\n";
 }
 };
+
+void radix_sort(int array[], int n){
+    vector<int> bucket[10];
+    for(int radix = 1, r = 0; r < 10; radix *= 10, r++) {
+        for(int i = 0; i < 10; i++)
+            bucket[i].clear();
+        for(int i = 0; i < n; i++){
+            int digit = (array[i]/radix) % 10;
+            bucket[digit].push_back(array[i]);
+        }
+        int len = 0;
+        for(int i = 0; i < 10; i++) {
+            int m = bucket[i].size();
+            for(int j = 0; j < m; j++)
+                array[len++] = bucket[i][j];
+        }
+    }
+}
+
+void radix_sort(vector<int> &array){
+    int n = array.size();
+    vector<int> bucket[10];
+    for(int radix = 1, r = 0; r < 10; radix *= 10, r++) {
+        for(int i = 0; i < 10; i++)
+            bucket[i].clear();
+        for(int i = 0; i < n; i++){
+            int digit = (array[i]/radix) % 10;
+            bucket[digit].push_back(array[i]);
+        }
+        int len = 0;
+        for(int i = 0; i < 10; i++) {
+            int m = bucket[i].size();
+            for(int j = 0; j < m; j++)
+                array[len++] = bucket[i][j];
+        }
+    }
+}
+
+void merge_sort(int array[], int n){
+    if(n < 2) return;
+    // divide into two arrays
+    int len1 = n / 2; // size of the first array
+    int len2 = n - len1; // size of the second array
+    int *array1 = array; // first array
+    int *array2 = array + len1; // second array
+    merge_sort(array1 , len1); // recursion on first array
+    merge_sort(array2 , len2); // recursion on second array
+
+    int *tmp = new int[n]; // temporary array
+    int len = 0; // length of the temp array
+    int pos1 = 0, pos2 = 0; // position of the two elements to compare
+    while( len < n ){
+        if( pos2 == len2 || ( pos1 < len1 && array1[pos1] <= array2[pos2] ) )
+            tmp[len++] = array1[pos1++];
+        else
+            tmp[len++] = array2[pos2++];
+    }
+    for( int i=0; i<n; i++)
+        array[i] = tmp[i];
+    delete[] tmp;
+}
