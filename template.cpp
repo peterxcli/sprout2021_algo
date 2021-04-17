@@ -143,17 +143,16 @@ void radix_sort(vector<int> &array){
 
 void merge_sort(int array[], int n){
     if(n < 2) return;
-    // divide into two arrays
-    int len1 = n / 2; // size of the first array
-    int len2 = n - len1; // size of the second array
-    int *array1 = array; // first array
-    int *array2 = array + len1; // second array
-    merge_sort(array1 , len1); // recursion on first array
-    merge_sort(array2 , len2); // recursion on second array
+    int len1 = n / 2;
+    int len2 = n - len1;
+    int *array1 = array;
+    int *array2 = array + len1;
+    merge_sort(array1 , len1);
+    merge_sort(array2 , len2);
 
-    int *tmp = new int[n]; // temporary array
-    int len = 0; // length of the temp array
-    int pos1 = 0, pos2 = 0; // position of the two elements to compare
+    int *tmp = new int[n];
+    int len = 0;
+    int pos1 = 0, pos2 = 0;
     while( len < n ){
         if( pos2 == len2 || ( pos1 < len1 && array1[pos1] <= array2[pos2] ) )
             tmp[len++] = array1[pos1++];
