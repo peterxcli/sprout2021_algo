@@ -1,18 +1,12 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[a4paper, 12pt]{report}
 \usepackage{fontspec}
 \usepackage{xeCJK}
+\usepackage{mathtools}
 
-\setmainfont{Times New Roman}
-
+% \setmainfont{Times New Roman}
 \setCJKmainfont{標楷體}
 
 \XeTeXlinebreaklocale "zh"
-
-\XeTeXlinebreakskip = 0pt plus 1pt
-
-\setlength{\parskip}{0.3cm}
-
-\linespread{1.5}\selectfont
 
 \title{算法班手寫作業 10}
 \author{李緒成}
@@ -24,18 +18,29 @@
     \begin{enumerate}
         \item
             \begin{itemize}
-                \item 設 $x>0$，設 $x$ 的二進位表示法中，第 $x$ 位為 $1$，第 $0$ 至第 $k-1$ 位都為 $0$ 
-                \item 對x的二進位表示法取反(\~$x$)，可以得到\~$x$的二進製表示中，第$k$位為$0$，第$0$到第$k-1$位都為$1$
-                \item 得到 \~$x+1$ 的二進位表示法的第 $k+1$ 位至其最高位都為與 $x$ 的二進位表示法中相反的數字
-                \item 而\~$x+1$ 的二進位表示法的第 $k$ 為 $1$，第 $0$ 至第 $k-1$位都為 $0$
-                \item 且 $x$ 的二進位表示法的第 $k$ 位也為 $1$
-                \item 所以將 \~$x+1$ 與 $x$ 進行 $\&$ 運算後，即可得到 $x$ 的 $lowbit$ 
-                \item 又 $-x$ $=$ \~$x+1$ ，所以 $lowbit(x)= x \space \& \space (−x)$
+                \item[] 設$x>0$，設$x$的二進位表示法中，第$x$位為$1$，第 $0$ 到第 $k-1$ 位都為 $0$ 
+                \item[] 對x的二進位表示法取反($\sim x$)，可以得到$\sim x$的二進製表示中，第$k$位為$0$，第$0$到第$k-1$位都為$1$
+                \item[] 得到 $\sim x+1$ 的二進位表示法的第 $k+1$ 位至其最高位都為與 $x$ 的二進位表示法中相反的數字
+                \item[] 而$\sim x+1$ 的二進位表示法的第 $k$ 為 $1$，第 $0$ 至第 $k-1$位都為 $0$
+                \item[] 且 $x$ 的二進位表示法的第 $k$ 位也為 $1$
+                \item[] 所以將 $\sim x+1$ 與 $x$ 進行 $\& $ 運算後，即可得到 $x$ 的 lowbit 
+                \item[] 又 $-x$ $=$ \~$x+1$ ，所以 lowbit$(x)= x \& (−x)$
             \end{itemize}
         \item
             \begin{enumerate}
                 \item 
             \end{enumerate}
         \item 
+            \begin{enumerate}
+                \item 
+            \end{enumerate}
+        \item 
+            \begin{enumerate}
+                \item ans = query$($dif$, x)$
+                \item modify$($dif$, b+1, -val), $modify$($dif2$, b+1, -val)$;\\
+                        modify(dif, a, val), modify(dif2, a, val);
+                \item \[ \sum_{i=1}^{x} arr[i] = \sum_{i=1}^{x} (n-i+1)dif[i] \]
+                \item query$($dif$, x)*(x+1) - $query$($dif2$, x)$
+            \end{enumerate}
     \end{enumerate}
 \end{document} 
