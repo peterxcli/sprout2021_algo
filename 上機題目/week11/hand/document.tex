@@ -1,10 +1,11 @@
-\documentclass[a4paper, 12pt]{report}
+\documentclass[a4paper, 12pt]{article}
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{mathtools}
+\usepackage{xcolor}
 
-% \setmainfont{Times New Roman}
-\setCJKmainfont{標楷體}
+% \setmainfont{新細明體}
+\setCJKmainfont{新細明體}
 
 \XeTeXlinebreaklocale "zh"
 
@@ -13,34 +14,80 @@
 
 \begin{document}
     \maketitle
-    \makeatother
     \newpage
     \begin{enumerate}
-        \item
+        \item 證明lowbit$(x) =x\&(−x)$
             \begin{itemize}
-                \item[] 設$x>0$，設$x$的二進位表示法中，第$x$位為$1$，第 $0$ 到第 $k-1$ 位都為 $0$ 
-                \item[] 對x的二進位表示法取反($\sim x$)，可以得到$\sim x$的二進製表示中，第$k$位為$0$，第$0$到第$k-1$位都為$1$
-                \item[] 得到 $\sim x+1$ 的二進位表示法的第 $k+1$ 位至其最高位都為與 $x$ 的二進位表示法中相反的數字
-                \item[] 而$\sim x+1$ 的二進位表示法的第 $k$ 為 $1$，第 $0$ 至第 $k-1$位都為 $0$
-                \item[] 且 $x$ 的二進位表示法的第 $k$ 位也為 $1$
-                \item[] 所以將 $\sim x+1$ 與 $x$ 進行 $\& $ 運算後，即可得到 $x$ 的 lowbit 
-                \item[] 又 $-x$ $=$ \~$x+1$ ，所以 lowbit$(x)= x \& (−x)$
+                \item 設$x>0$，設$x$的二進位表示法中，第$x$位為$1$，第 $0$ 到第 $k-1$ 位都為 $0$ 
+                \item 對x的二進位表示法取反($\sim x$)，可以得到$\sim x$的二進位表示法中，第$k$位為$0$，第$0$到第$k-1$位都為$1$
+                \item 得到$\sim x+1$的二進位表示法的第 $k+1$ 位至其最高位都為與 $x$ 的二進位表示法中相反的數字
+                \item 而$\sim x+1$的二進位表示法的第$k$為$1$，第$0$至第$k-1$位都為$0$
+                \item 且$x$的二進位表示法的第$k$位為$1$
+                \item 所以將 $\sim x+1$ 與$x$ 進行$\&$運算後，即可得到$x$的lowbit 
+                \item 又$-x=\sim x+1$ ，所以 lowbit$(x)= x \& (−x)$
             \end{itemize}
+        \newpage
         \item
             \begin{enumerate}
-                \item 
+                \item 證明$\sum\limits_{i = 0}^{n} i·2^{i−1}= (n−1)·2^n+ 1$
+                    \begin{enumerate}
+                        \item 證$n = 1$時成立:\\
+                              帶入後得到$$\sum_{i = 0}^{1} i·2^{i−1} = (1−1)·2^1+ 1 = 1$$
+                              命題成立
+                        \item 證若在$n=k$時成立, 則$n=k+1$時也會成立:\\
+                              假設$n=k$時成立，即$$\sum_{i = 0}^{k} i·2^{i−1}= (k−1)·2^k+ 1$$
+                              則當$n=k+1$時
+                              \begin{align*}
+                                &\sum_{i = 0}^{k+1} i·2^{i−1}= ((k+1)−1)·2^{k+1}+ 1\\
+                                &\sum_{i = 0}^{k} i·2^{i−1} + (k+1) \cdot 2^k = 2k·2^{k}+ 1\\
+                                &\sum_{i = 0}^{k} i·2^{i−1} + (k+1) \cdot 2^k = (k−1)·2^k + (k+1)·2^k + 1\\
+                                &\sum_{i = 0}^{k} {i}·2^{i−1} + {\color{red}(k+1) \cdot 2^k} = (k−1)·2^k + 1 + {\color{red}(k+1) \cdot 2^k}
+                              \end{align*}
+                              
+                              命題仍然成立\\
+                              由i， ii以數學歸納法得證
+                    \end{enumerate}
+                \newpage
+                \item 證明：$f(m)\geq m·2^{m−1},$ for $ m\geq 0。($即：$f(m)\geq n^2·log_{2} n, $ for $ n= 2^m, m\geq 0)$
+                    \begin{enumerate}
+                        \item 證$m = 1$時成立:\\
+                              帶入後得到
+                              \begin{align*}
+                                &f(1)=2^1+\sum_{k=0}^{0} f(k)\geq 1 \cdot 2^0 \\\\
+                                &3\geq 1 
+                              \end{align*}
+                              命題成立
+                        \item 證若在$n=t$時成立, 則$n=t+1$時也會成立:\\
+                              假設$m=t$時成立，即$$f(t)=2^{t}+\sum_{k=0}^{t-1} f(k)\geq t·2^{t−1}$$
+                              則當$n=t+1$時
+                              \begin{align*}
+                                f(t+1) &= 2^{t+1}+\sum_{k=0}^{t} f(k)\geq (t+1)·2^{t}\\
+                                       &= 2^{t+1}+\sum_{k=0}^{t} f(k)\geq (2t+2)·2^{t-1}\\
+                                       &= 2^{t+1}+\sum_{k=0}^{t} f(k)\geq 2t·2^{t-1}+2·2^{t-1}\\
+                                       &= 2^{t+1}+f(t)+\sum_{k=0}^{t-1} f(k)\geq 2t·2^{t-1}+2^{t}\\
+                                       &= f(t)+2^{t}+{\color{red}2^{t}+\sum_{k=0}^{t-1} f(k)}\geq 2t·2^{t-1}+2^{t}\\
+                                       &= f(t)+2^{t}+{\color{red}f(t)}\geq 2t·2^{t-1}+2^{t}\\\\
+                                       &= 2\cdot f(t)+2^{t}\geq 2\cdot t·2^{t-1}+2^{t}
+                              \end{align*}
+                              命題仍然成立\\
+                              由i， ii以數學歸納法得證
+                \newpage
+
+                    \end{enumerate}
             \end{enumerate}
         \item 
             \begin{enumerate}
-                \item 
+                \item query$(2, 8)$或是假設有n個元素，則query(2, n)
+                \item $O((\log_2 n)^2)$
             \end{enumerate}
         \item 
             \begin{enumerate}
                 \item ans = query$($dif$, x)$
-                \item modify$($dif$, b+1, -val), $modify$($dif2$, b+1, -val)$;\\
-                        modify(dif, a, val), modify(dif2, a, val);
-                \item \[ \sum_{i=1}^{x} arr[i] = \sum_{i=1}^{x} (n-i+1)dif[i] \]
+                \item modify$($dif$, b+1, -$val$), $modify$($dif2$, b+1, -$val);\\
+                        modify(dif$, a, $val), modify(dif2$, a, $val);
+                \item $\sum\limits_{i=1}^{x} arr[i] = \sum\limits_{i=1}^{x} (n-i+1)$dif$[i] $
                 \item query$($dif$, x)*(x+1) - $query$($dif2$, x)$
             \end{enumerate}
     \end{enumerate}
+
 \end{document} 
