@@ -77,16 +77,16 @@
             \end{enumerate}
         \item 
             \begin{enumerate}
-                \item query$(2, 8)$或是假設有n個元素，則query(2, n)
+                \item query$(2, 8)$或是假設有n個元素，則query$(2, n)$
                 \item $O((\log_2 n)^2)$
             \end{enumerate}
         \item 
             \begin{enumerate}
                 \item ans = query$($dif$, x)$
-                \item modify$($dif$, b+1, -$val$), $modify$($dif2$, b+1, -$val);\\
-                        modify(dif$, a, $val), modify(dif2$, a, $val);
-                \item $\sum\limits_{i=1}^{x} arr[i] = \sum\limits_{i=1}^{x} (n-i+1)$dif$[i] $
-                \item query$($dif$, x)*(x+1) - $query$($dif2$, x)$
+                \item modify$($dif$, b+1, -$val$), $modify$($dif2$, b+1, -$val$\cdot (b+1));$\\
+                        modify(dif$, a, $val), modify(dif2$, a, $val$\cdot a)$;
+                \item $\sum\limits_{i=1}^{x} arr[i] = \sum\limits_{i=1}^{x} (x-i+1)$dif$[i] $
+                \item query$($dif$, x)\cdot (x+1) - $query$($dif2$, x)$
             \end{enumerate}
     \end{enumerate}
 
